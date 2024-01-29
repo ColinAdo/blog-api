@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'drf_spectacular',
 
     'allauth.socialaccount',
     # Local
@@ -62,6 +63,7 @@ REST_FRAMEWORK = {  # new
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 MIDDLEWARE = [
@@ -161,5 +163,12 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'Simple demo to learn DRF',
+    'VERSION': '1.0.0',
+    # OTHER SETTINGS
+}
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
